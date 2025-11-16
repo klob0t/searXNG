@@ -7,7 +7,7 @@ general:
   enable_metrics: false     # metrics off to keep overhead low
 
 server:
-  base_url: "https://your-service.koyeb.app/"   # override with env in prod
+  base_url: "https://searxng-chloe.koyeb.app/"   # override with env in prod
   bind_address: "0.0.0.0"
   port: 8080
   secret_key: "CHANGE_ME_IN_ENV"                # actually set via env
@@ -17,7 +17,7 @@ server:
   enable_http2: false                           # keep it simple
 
 search:
-  safe_search: 1             # 0 = off, 1 = moderate, 2 = strict
+  safe_search: 0             # 0 = off, 1 = moderate, 2 = strict
   default_lang: "en"
   default_locale: "en_US"
   autocomplete: "duckduckgo" # cheap & decent
