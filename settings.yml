@@ -81,5 +81,13 @@ engines:
 
 # Categories shown in the UI – keep it minimal for personal use
 categories_as_tabs:
-  - general
-  - it
+  general:
+  images:
+  videos:
+  news:
+  map:
+  music:
+  it:
+  science:
+  files:
+  social media:
