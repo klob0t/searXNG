@@ -1,4 +1,4 @@
-# settings.yml – tuned for Koyeb free tier
+# settings.yml - tuned for Koyeb free tier
 
 general:
   debug: false
@@ -32,19 +32,19 @@ ui:
   infinite_scroll: false     # less JS, simpler UI
 
 outgoing:
-  request_timeout: 3.0       # seconds; small so slow engines don’t hang
+  request_timeout: 3.0       # seconds; small so slow engines don't hang
   pool_connections: 10
   pool_maxsize: 10
   max_retries: 1
   # You can add HTTP proxy config here later if needed
 
 # Only enable a small, sane set of engines to keep RAM and outbound traffic low.
-# You can always add more once it’s stable.
+# You can always add more once it's stable.
 engines:
 
   # 1) Main general search (Brave API - recommended if you have a key)
   - name: brave
-    disabled: true          # flip to true if you don't have a key yet
+    disabled: true          # flip to false if you have a key
     engine: brave
     api_key: "ENV:BRAVE_API_KEY"   # set BRAVE_API_KEY in Koyeb env
     categories: [general]
@@ -67,7 +67,7 @@ engines:
     timeout: 2.5
     weight: 0.8
 
-  # 4) Stack Overflow – optional; useful for dev queries, can be noisy
+  # 4) Stack Overflow - optional; useful for dev queries, can be noisy
   - name: stackoverflow
     disabled: true           # turn on later if you want
     engine: stackoverflow
@@ -75,19 +75,15 @@ engines:
     timeout: 2.5
     weight: 0.5
 
-  # 5) Local file / offline engines – keep disabled on Koyeb
-  - name: local_files
-    disabled: true
-
-# Categories shown in the UI – keep it minimal for personal use
+# Categories shown in the UI - keep it minimal for personal use
 categories_as_tabs:
-  general:
-  images:
-  videos:
-  news:
-  map:
-  music:
-  it:
-  science:
-  files:
-  social media:
+  general: {}
+  images: {}
+  videos: {}
+  news: {}
+  map: {}
+  music: {}
+  it: {}
+  science: {}
+  files: {}
+  social media: {}
