@@ -1,10 +1,10 @@
 FROM searxng/searxng:latest
 
-# Use our minimal config and limiter file to keep logs clean
-COPY settings.yml /etc/searxng/settings.yml
+# Keep the image's default settings.yml (schema-compatible)
+# Only add limiter.toml to silence warning
 COPY limiter.toml /etc/searxng/limiter.toml
 
-# Point SearXNG to the config we ship
+# Ensure SearXNG uses default config path
 ENV SEARXNG_SETTINGS_PATH=/etc/searxng/settings.yml
 
 # Reduce concurrency for Koyeb free tier
