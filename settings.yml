@@ -7,10 +7,10 @@ general:
   enable_metrics: false     # metrics off to keep overhead low
 
 server:
-  base_url: "https://searxng-chloe.koyeb.app/"   # override with env in prod
+  base_url: "ENV:SEARXNG_BASE_URL"   # set this in Koyeb env (must end with slash)
   bind_address: "0.0.0.0"
   port: 8080
-  secret_key: "CHANGE_ME_IN_ENV"                # actually set via env
+  secret_key: "ENV:SEARXNG_SECRET_KEY"         # set this in Koyeb env
   limiter: true                                 # basic rate limiting
   public_instance: false                        # you mainly use it via Chloe
   image_proxy: true
