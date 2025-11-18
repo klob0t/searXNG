@@ -1,86 +1,26 @@
-# settings.yml - tuned for Koyeb free tier
+## Minimal settings.yml compatible with recent SearXNG
 
 general:
   debug: false
-  instance_name: "klob0t searxng"
-  contact_url: ""           # you can add a mailto: if you want
-  enable_metrics: false     # metrics off to keep overhead low
+  instance_name: "SearXNG"
 
 server:
-  base_url: "ENV:SEARXNG_BASE_URL"   # set this in Koyeb env (must end with slash)
+  # Use false to let SearXNG infer from requests; set explicitly later if you want
+  base_url: false
   bind_address: "0.0.0.0"
   port: 8080
-  secret_key: "ENV:SEARXNG_SECRET_KEY"         # set this in Koyeb env
-  # keep server section minimal to satisfy schema on latest SearXNG
+  # Provide a non-empty default; you can override via env by rebuilding image or editing this file
+  secret_key: "CHANGE_ME"
 
-search:
-  safe_search: 0             # 0 = off, 1 = moderate, 2 = strict
-  default_lang: "en"
-  default_locale: "en_US"
-  autocomplete: "duckduckgo" # cheap & decent
-  default_page_size: 10
-  max_page_size: 20
-  max_results: 50
-
-ui:
-  default_theme: simple
-  default_locale: "en_US"
-  query_in_title: true
-  infinite_scroll: false     # less JS, simpler UI
-
-outgoing:
-  request_timeout: 3.0       # seconds; small so slow engines don't hang
-  pool_connections: 10
-  pool_maxsize: 10
-  max_retries: 1
-  # You can add HTTP proxy config here later if needed
-
-# Only enable a small, sane set of engines to keep RAM and outbound traffic low.
-# You can always add more once it's stable.
 engines:
-
-  # 1) Main general search (Brave API - recommended if you have a key)
-  - name: brave
-    disabled: true          # flip to false if you have a key
-    engine: brave
-    api_key: ""                    # set BRAVE_API_KEY env and change this when enabling
-    categories: [general]
-    timeout: 2.5
-    weight: 1.2
-
-  # 2) DuckDuckGo HTML as a fallback (no key, but more fragile long-term)
   - name: duckduckgo
-    disabled: false
     engine: duckduckgo
-    categories: [general]
-    timeout: 2.5
-    weight: 1.0
-
-  # 3) Wikipedia for factual grounding
-  - name: wikipedia
     disabled: false
-    engine: wikipedia
     categories: [general]
     timeout: 2.5
-    weight: 0.8
 
-  # 4) Stack Overflow - optional; useful for dev queries, can be noisy
-  - name: stackoverflow
-    disabled: true           # turn on later if you want
-    engine: stackoverflow
-    categories: [it]
+  - name: wikipedia
+    engine: wikipedia
+    disabled: false
+    categories: [general]
     timeout: 2.5
-    weight: 0.5
-
-# Categories shown in the UI - keep it minimal for personal use
-categories_as_tabs:
-  general: {}
-  images: {}
-  videos: {}
-  news: {}
-  map: {}
-  music: {}
-  it: {}
-  science: {}
-  files: {}
-  social media: {}
