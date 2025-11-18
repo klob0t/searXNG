@@ -11,10 +11,7 @@ server:
   bind_address: "0.0.0.0"
   port: 8080
   secret_key: "ENV:SEARXNG_SECRET_KEY"         # set this in Koyeb env
-  limiter: true                                 # basic rate limiting
-  public_instance: false                        # you mainly use it via Chloe
-  image_proxy: true
-  enable_http2: false                           # keep it simple
+  # keep server section minimal to satisfy schema on latest SearXNG
 
 search:
   safe_search: 0             # 0 = off, 1 = moderate, 2 = strict
@@ -46,7 +43,7 @@ engines:
   - name: brave
     disabled: true          # flip to false if you have a key
     engine: brave
-    api_key: "ENV:BRAVE_API_KEY"   # set BRAVE_API_KEY in Koyeb env
+    api_key: ""                    # set BRAVE_API_KEY env and change this when enabling
     categories: [general]
     timeout: 2.5
     weight: 1.2
