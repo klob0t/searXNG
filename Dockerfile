@@ -1,7 +1,5 @@
 FROM searxng/searxng:latest
 
-# Copy your custom config into the container
-COPY settings.yml /etc/searxng/settings.yml
-
-# (optional but explicit)
+# Use the image's default config (schema-compatible)
+# You can reintroduce a custom settings.yml later once stable
 ENV SEARXNG_SETTINGS_PATH=/etc/searxng/settings.yml
